@@ -1,0 +1,24 @@
+{
+	"name": "utopian-friends-astro",
+	"type": "module",
+	"version": "0.0.1",
+	"scripts": {
+		"dev": "astro dev",
+		"start": "astro dev",
+		"build": "astro build",
+		"preview": "astro preview",
+		"astro": "astro"
+	},
+	"dependencies": {
+		"@astrojs/node": "^5.0.4",
+		"@types/marked": "^4.0.8",
+		"astro": "^2.0.15",
+		"commonmark": "^0.30.0",
+		"marked": "^4.2.12",
+		"sass": "^1.58.3",
+		"scss": "^0.2.4"
+	},
+	"devDependencies": {
+		"@types/commonmark": "^0.27.5"
+	}
+}

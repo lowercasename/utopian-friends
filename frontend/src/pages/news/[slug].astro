@@ -1,0 +1,31 @@
+---
+import { marked } from "marked";
+import type { Post } from "../../lib/types";
+import { getPostBySlug, strapiFetch } from "../../lib/strapi";
+import "../../scss/index.scss";
+
+const { slug } = Astro.params;
+if (!slug) {
+  throw new Error("No slug provided");
+}
+const post: Post = await getPostBySlug(slug);
+
+// export async function getStaticPaths() {
+//   const { data } = await strapiFetch("/posts");
+//   const posts: Post[] = data;
+
+//   return posts.map((post) => ({
+//     params: {
+//       slug: post.attributes.Slug,
+//     },
+//     props: {
+//       post,
+//     },
+//   }));
+// }
+---
+
+<article>
+  <h1 set:html={post.attributes.Title} />
+  <Fragment set:html={marked.parse(post.attributes.Content)} />
+</article>

@@ -1,0 +1,27 @@
+.env
+.env.production
+
+# dependencies
+node_modules/
+
+# build output
+frontend/dist/
+# generated types
+frontend/.astro/
+
+# logs
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+pnpm-debug.log*
+
+# macOS-specific files
+.DS_Store
+
+# Strapi
+admin/license.txt
+admin/exports
+admin/*.cache
+admin/dist
+admin/build
+admin/.strapi-updater.json

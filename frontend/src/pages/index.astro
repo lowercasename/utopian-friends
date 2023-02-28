@@ -1,0 +1,70 @@
+---
+import { marked } from "marked";
+import type { Post } from "../lib/types";
+import { strapiFetch } from "../lib/strapi";
+import "../scss/index.scss";
+
+const { data } = await strapiFetch("/posts");
+const posts: Post[] = data;
+posts.sort((a, b) => {
+  return (
+    new Date(b.attributes.publishedAt).getTime() -
+    new Date(a.attributes.publishedAt).getTime()
+  );
+});
+---
+
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+    <meta name="viewport" content="width=device-width" />
+    <meta name="generator" content={Astro.generator} />
+    <title>Astro</title>
+    <!-- FontAwesome v6 -->
+    <link rel="stylesheet" href="/all.min.css" />
+  </head>
+  <body>
+    <nav id="pre-header">
+      <a href="https://twitter.com/utopianfriends"
+        ><i class="fa-brands fa-twitter"></i> Twitter</a
+      >
+    </nav>
+    <header id="header">
+      <h1>Utopian Friends Society</h1>
+      <nav id="header-nav">
+        <a href="/">Home</a>
+        <a href="/about/">About</a>
+        <a href="/news/">News</a>
+        <a href="/friends">Friends</a>
+        <a href="/events">Events</a>
+      </nav>
+    </header>
+    <section id="main-wrapper">
+      <main id="main">
+        {
+          posts.map((post) => (
+            <article>
+              <h2>
+                <a href={`/news/${post.attributes.Slug}/`}>
+                  {post.attributes.Title}
+                </a>
+              </h2>
+              <Fragment set:html={marked.parse(post.attributes.Content)} />
+            </article>
+          ))
+        }
+      </main>
+      <nav id="sidebar">
+        <h2>Subscribe</h2>
+        <p>
+          Join the Utopian Friends mailing list to keep up to date with our
+          future plans and events.
+        </p>
+      </nav>
+    </section>
+    <footer id="footer">
+      <p>Footer</p>
+    </footer>
+  </body>
+</html>
