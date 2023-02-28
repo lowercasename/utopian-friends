@@ -10,15 +10,10 @@
 		"astro": "astro"
 	},
 	"dependencies": {
-		"@astrojs/node": "^5.0.4",
 		"@types/marked": "^4.0.8",
 		"astro": "^2.0.15",
-		"commonmark": "^0.30.0",
 		"marked": "^4.2.12",
-		"sass": "^1.58.3",
-		"scss": "^0.2.4"
+		"sass": "^1.58.3"
 	},
-	"devDependencies": {
-		"@types/commonmark": "^0.27.5"
-	}
+	"devDependencies": {}
 }
