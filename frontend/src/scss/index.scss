@@ -184,7 +184,7 @@ footer#footer {
 
 a {
     color: rgb(10 113 193);
-    transition: all .15s ease-in-out;
+    transition: color .15s ease-in-out, border-color .15s ease-in-out;
     text-decoration: none;
     border-bottom: 0.1rem solid transparent;
     &:hover {
