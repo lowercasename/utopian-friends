@@ -16,12 +16,16 @@
       "type": "string",
       "required": true
     },
-    "Content": {
-      "type": "richtext"
-    },
     "Slug": {
       "type": "uid",
       "targetField": "Title"
+    },
+    "Content": {
+      "type": "customField",
+      "options": {
+        "preset": "toolbar"
+      },
+      "customField": "plugin::ckeditor5.CKEditor"
     }
   }
 }
