@@ -23,7 +23,12 @@ const headerMenu: MenuItem[] = await getMenuBySlug("header");
       >
     </nav>
     <header id="header">
-      <h1>Utopian Friends Society</h1>
+      <div id="header-wrapper">
+        <h1>Utopian Friends Society</h1>
+        <button id="menu-toggle">
+          <i class="fa-solid fa-bars"></i>
+        </button>
+      </div>
       <nav id="header-nav">
         {
           headerMenu.map((item) => (
@@ -54,3 +59,11 @@ const headerMenu: MenuItem[] = await getMenuBySlug("header");
     </footer>
   </body>
 </html>
+
+<script>
+  const menuToggle = document.getElementById("menu-toggle");
+  const headerNav = document.getElementById("header-nav");
+  menuToggle?.addEventListener("click", () => {
+    headerNav?.classList.toggle("active");
+  });
+</script>

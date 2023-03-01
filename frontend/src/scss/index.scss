@@ -31,15 +31,38 @@ nav#pre-header {
 }
 
 header#header {
-    text-align: center;
     border-bottom: 1px solid #ddd;
     box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
     margin-bottom: 1rem;
+    #header-wrapper {
+        display: flex;
+        flex-direction: row;
+        justify-content: space-between;
+        align-items: center;
+        @include for-tablet-landscape-up {
+            justify-content: center;
+        }
+    }
+    #menu-toggle {
+        margin-right: 1rem;
+        display: block;
+        background-color: transparent;
+        border: none;
+        cursor: pointer;
+        padding: 0;
+        font-size: 2rem;
+        color: #333;
+        @include for-tablet-landscape-up {
+            display: none;
+        }
+    }
     h1 {
         font-weight: 900;
-        font-size: 3rem;
+        // From: https://royalfig.github.io/fluid-typography-calculator/
+        font-size: 2rem;
+        font-size: clamp(2rem, 1.4545454545454546rem + 2.727272727272727vw, 3.5rem);
         margin: 0;
-        padding: 1rem 0;
+        padding: 1rem;
     }
     &::before {
         display: block;
@@ -64,10 +87,14 @@ header#header {
 }
 
 nav#header-nav {
-    display: flex;
+    display: none;
     flex-direction: column;
     border-top: 1px solid #eee;
+    &.active {
+        display: flex;
+    }
     @include for-tablet-landscape-up {
+        display: flex;
         flex-direction: row;
         justify-content: center;
     }
@@ -76,7 +103,7 @@ nav#header-nav {
         padding: 0.75rem 2rem;
         text-decoration: none;
         color: #333;
-        font-weight: 500;
+        font-weight: 700;
         border: none;
         &:hover {
             background-color: #eee;
