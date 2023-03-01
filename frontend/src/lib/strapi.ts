@@ -32,3 +32,23 @@ export const getPostBySlug = async (slug: string) => {
         return null;
     }
 }
+
+export const getPageBySlug = async (slug: string) => {
+    try {
+        const reponse = await strapiFetch(`/pages?filters[Slug][$eq]=${slug}`);
+        return reponse.data[0];
+    } catch (error) {
+        console.error(error);
+        return null;
+    }
+}
+
+export const getMenuBySlug = async (slug: string) => {
+    try {
+        const reponse = await strapiFetch(`/menus?query=[slug][$eq]=${slug}&populate=*`);
+        return reponse.data[0].attributes.items.data.sort((a: any, b: any) => a.attributes.order - b.attributes.order);
+    } catch (error) {
+        console.error(error);
+        return null;
+    }
+}

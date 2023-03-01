@@ -12,6 +12,7 @@ body {
     flex-direction: column;
     min-height: 100vh;
     color: #333;
+    line-height: 1.75;
 }
 
 nav#pre-header {
@@ -76,8 +77,10 @@ nav#header-nav {
         text-decoration: none;
         color: #333;
         font-weight: 500;
+        border: none;
         &:hover {
             background-color: #eee;
+            border: none;
         }
         &:not(:last-of-type) {
             border-bottom: 1px solid #eee;
@@ -100,6 +103,7 @@ section#main-wrapper {
 
 main#main {
     flex: 0.8;
+    padding: 0 1rem;
     @include for-tablet-landscape-up {
         max-width: calc(0.8 * 1200px);
         margin-left: auto;
@@ -108,26 +112,80 @@ main#main {
 
 nav#sidebar {
     flex: 0.2;
+    padding: 0 1rem;
+    border-top: 1px solid #ddd;
     @include for-tablet-landscape-up {
         max-width: calc(0.2 * 1200px);
         margin-right: auto;
+        border-top: none;
     }
 }
 
 footer#footer {
+    text-align: center;
+    font-size: smaller;
+    border-top: 1px solid #ddd;
+    background-color: #eee;
+    padding: 1rem;
+    p {
+        margin: 0;
+    }
 }
 
-h1, h2, h3, h4, h5 {
-    font-family: 'Gloock', sans-serif;
-    font-weight: 700;
-    margin: 0;
+#post {
+    &__meta {
+        color: #777;
+        border-bottom: 1px solid #eee;
+        padding-bottom: 0.5rem;
+        margin-bottom: 2rem;
+        p {
+            margin: 0;
+        }
+        &.post__meta--compact {
+            border-bottom: none;
+            padding: 0;
+            margin-bottom: 1rem;
+            font-size: 0.9rem;
+        }
+    }
+    &__bottom-navigation {
+        border-top: 1px solid #eee;
+        margin-top: 2rem;
+        padding-top: 0.5rem;
+    }
 }
 
 a {
-    color:rgb(95, 38, 227);
+    color: rgb(10 113 193);
     transition: all .15s ease-in-out;
     text-decoration: none;
+    border-bottom: 0.1rem solid transparent;
     &:hover {
-        color: darken(rgb(95, 38, 227), 20%);
+        color: darken(rgb(10 113 193), 20%);
+        border-bottom: 0.1rem solid darken(rgb(10 113 193), 20%);
     }
 }
+
+p {
+    margin-top: 0;
+    margin-bottom: 1rem;
+}
+
+h1, h2, h3, h4, h5 {
+    margin: 0 0 0.5rem 0;
+    font-family: 'Gloock', sans-serif;
+    font-weight: 700;
+}
+
+h1 {
+  margin-top: 0;
+  font-size: 2.488rem;
+}
+
+h2 {font-size: 2.074rem;}
+
+h3 {font-size: 1.728rem;}
+
+h4 {font-size: 1.44rem;}
+
+h5 {font-size: 1.2rem;}

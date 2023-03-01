@@ -1,8 +1,9 @@
 ---
+import BaseLayout from "../../layouts/BaseLayout.astro";
 import { marked } from "marked";
 import type { Post } from "../../lib/types";
 import { getPostBySlug, strapiFetch } from "../../lib/strapi";
-import "../../scss/index.scss";
+import PostMeta from "../../components/PostMeta.astro";
 
 const { slug } = Astro.params;
 if (!slug) {
@@ -25,7 +26,15 @@ export async function getStaticPaths() {
 }
 ---
 
-<article>
-  <h1 set:html={post.attributes.Title} />
-  <Fragment set:html={marked.parse(post.attributes.Content)} />
-</article>
+<BaseLayout title={post.attributes.Title}>
+  <article>
+    <h1 set:html={post.attributes.Title} />
+    <PostMeta post={post} />
+    <Fragment set:html={marked.parse(post.attributes.Content)} />
+  </article>
+  <aside id="post__bottom-navigation">
+    <p>
+      <i class="fas fa-arrow-left"></i>{" "}<a href="/news">Back to News</a>
+    </p>
+  </aside>
+</BaseLayout>

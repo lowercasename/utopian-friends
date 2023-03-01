@@ -1,0 +1,20 @@
+---
+const { post, compact } = Astro.props;
+---
+
+<aside
+  id="post__meta"
+  class:list={compact ? "post__meta--compact" : "post__meta--standard"}
+>
+  <p>
+    <time datetime={post.attributes.publishedAt}
+      >{
+        new Date(post.attributes.publishedAt).toLocaleDateString("en-GB", {
+          year: "numeric",
+          month: "long",
+          day: "numeric",
+        })
+      }</time
+    >
+  </p>
+</aside>

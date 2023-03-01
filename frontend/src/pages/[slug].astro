@@ -1,0 +1,33 @@
+---
+// Standard pages [slug].astro
+import type { Page } from "../lib/types";
+import BaseLayout from "../layouts/BaseLayout.astro";
+import { getPageBySlug, strapiFetch } from "../lib/strapi";
+
+const { slug } = Astro.params;
+if (!slug) {
+  throw new Error("No slug provided");
+}
+const page: Page = await getPageBySlug(slug);
+
+export async function getStaticPaths() {
+  const { data } = await strapiFetch("/pages");
+  const pages: Page[] = data;
+
+  return pages.map((page) => ({
+    params: {
+      slug: page.attributes.Slug,
+    },
+    props: {
+      page,
+    },
+  }));
+}
+---
+
+<BaseLayout title={page.attributes.Title}>
+  <article>
+    <h1>{page.attributes.Title}</h1>
+    <div class="content" set:html={page.attributes.Content} />
+  </article>
+</BaseLayout>
