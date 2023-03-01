@@ -10,19 +10,19 @@ if (!slug) {
 }
 const post: Post = await getPostBySlug(slug);
 
-// export async function getStaticPaths() {
-//   const { data } = await strapiFetch("/posts");
-//   const posts: Post[] = data;
+export async function getStaticPaths() {
+  const { data } = await strapiFetch("/posts");
+  const posts: Post[] = data;
 
-//   return posts.map((post) => ({
-//     params: {
-//       slug: post.attributes.Slug,
-//     },
-//     props: {
-//       post,
-//     },
-//   }));
-// }
+  return posts.map((post) => ({
+    params: {
+      slug: post.attributes.Slug,
+    },
+    props: {
+      post,
+    },
+  }));
+}
 ---
 
 <article>
