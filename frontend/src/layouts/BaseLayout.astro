@@ -1,18 +1,19 @@
 ---
 const { title } = Astro.props;
-import { getMenuBySlug } from "../lib/strapi";
+import { getMenuBySlug, getGlobalSettings } from "../lib/strapi";
 import type { MenuItem } from "../lib/types";
 import "../scss/index.scss";
 const headerMenu: MenuItem[] = await getMenuBySlug("header");
+const globalSettings = await getGlobalSettings();
 ---
 
 <html lang="en">
   <head>
     <meta charset="utf-8" />
-    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+    <link rel="icon" href="/favicon.ico" />
     <meta name="viewport" content="width=device-width" />
     <meta name="generator" content={Astro.generator} />
-    <title>{title} | Utopian Friends</title>
+    <title>{title} | {globalSettings.siteTitle}</title>
     <!-- FontAwesome v6 -->
     <link rel="stylesheet" href="/all.min.css" />
   </head>
@@ -24,7 +25,7 @@ const headerMenu: MenuItem[] = await getMenuBySlug("header");
     </nav>
     <header id="header">
       <div id="header-wrapper">
-        <h1>Utopian Friends Society</h1>
+        <h1>{globalSettings.siteTitle}</h1>
         <button id="menu-toggle">
           <i class="fa-solid fa-bars"></i>
         </button>

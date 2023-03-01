@@ -3,6 +3,10 @@ export interface StrapiFetchOptions {
     [key: string]: any;
 }
 
+export interface GlobalSettings {
+    siteTitle: string;
+}
+
 export interface Post {
     id: number;
     attributes: {

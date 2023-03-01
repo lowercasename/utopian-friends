@@ -1,4 +1,4 @@
-import type { StrapiFetchOptions } from './types';
+import type { GlobalSettings, StrapiFetchOptions } from './types';
 
 export const strapiFetch = async (path: string, options: StrapiFetchOptions = {}) => {
     console.log(`${import.meta.env.STRAPI_URL}/api${path}`);
@@ -20,6 +20,18 @@ export const strapiFetch = async (path: string, options: StrapiFetchOptions = {}
     } catch (error) {
         console.error(error);
         return null;
+    }
+}
+
+export const getGlobalSettings = async (): Promise<GlobalSettings> => {
+    try {
+        const reponse = await strapiFetch('/global');
+        return reponse.data.attributes as GlobalSettings;
+    } catch (error) {
+        console.error(error);
+        return {
+            siteTitle: 'Site Title',
+        };
     }
 }
 
