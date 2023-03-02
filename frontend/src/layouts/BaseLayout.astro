@@ -1,9 +1,8 @@
 ---
 const { title } = Astro.props;
 import { getMenuBySlug, getGlobalSettings } from "../lib/strapi";
-import type { MenuItem } from "../lib/types";
 import "../scss/index.scss";
-const headerMenu: MenuItem[] = await getMenuBySlug("header");
+const headerMenu = await getMenuBySlug("main-navigation");
 const globalSettings = await getGlobalSettings();
 ---
 
@@ -31,13 +30,7 @@ const globalSettings = await getGlobalSettings();
         </button>
       </div>
       <nav id="header-nav">
-        {
-          headerMenu.map((item) => (
-            <a href={item.attributes.url} target={item.attributes.target}>
-              {item.attributes.title}
-            </a>
-          ))
-        }
+        {headerMenu.map((item) => <a href={item.url}>{item.title}</a>)}
       </nav>
     </header>
     <section id="main-wrapper">

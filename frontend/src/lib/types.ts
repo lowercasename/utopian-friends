@@ -32,11 +32,7 @@ export interface Page {
 }
 
 export interface MenuItem {
-    id: number;
-    attributes: {
-        title: string;
-        url: string;
-        target: string;
-        order: number;
-    }
+    title: string;
+    url: string;
+    order: number;
 };

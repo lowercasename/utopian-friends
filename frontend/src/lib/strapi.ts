@@ -1,4 +1,4 @@
-import type { GlobalSettings, StrapiFetchOptions } from './types';
+import type { GlobalSettings, MenuItem, StrapiFetchOptions } from './types';
 
 export const strapiFetch = async (path: string, options: StrapiFetchOptions = {}) => {
     console.log(`${import.meta.env.STRAPI_URL}/api${path}`);
@@ -55,12 +55,28 @@ export const getPageBySlug = async (slug: string) => {
     }
 }
 
-export const getMenuBySlug = async (slug: string) => {
+export const getMenuBySlug = async (slug: string): Promise<MenuItem[]> => {
     try {
-        const reponse = await strapiFetch(`/menus?query=[slug][$eq]=${slug}&populate=*`);
-        return reponse.data[0].attributes.items.data.sort((a: any, b: any) => a.attributes.order - b.attributes.order);
+        const reponse = await strapiFetch(`/navigation/render/${slug}`);
+        return reponse
+            .sort((a: any, b: any) => a.order - b.order)
+            .map((item: any) => {
+                if (item.type === 'EXTERNAL') {
+                    return {
+                        order: item.order,
+                        title: item.title,
+                        url: item.externalPath,
+                    } as MenuItem;
+                } else if (item.type === 'INTERNAL') {
+                    return {
+                        order: item.order,
+                        title: item.title,
+                        url: `/${item.path}`
+                    } as MenuItem;
+                }
+        });
     } catch (error) {
         console.error(error);
-        return null;
+        return [];
     }
 }
