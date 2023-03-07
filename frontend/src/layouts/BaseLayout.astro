@@ -1,5 +1,6 @@
 ---
 const { title } = Astro.props;
+import MailChimpForm from "../components/MailChimpForm.astro";
 import { getMenuBySlug, getGlobalSettings } from "../lib/strapi";
 import "../scss/index.scss";
 const headerMenu = await getMenuBySlug("main-navigation");
@@ -43,6 +44,7 @@ const globalSettings = await getGlobalSettings();
           Join the Utopian Friends mailing list to keep up to date with our
           future plans and events.
         </p>
+        <MailChimpForm />
       </nav>
     </section>
     <footer id="footer">

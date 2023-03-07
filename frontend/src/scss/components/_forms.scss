@@ -1,0 +1,43 @@
+button, input {
+    font-family: 'Nunito', sans-serif;
+}
+
+input[type=text],
+input[type=password],
+input[type=email] {
+    border: 1px solid #ddd;
+    border-radius: 0.25rem;
+    font-size: 1rem;
+    padding: 0.25rem 0.35rem;
+    margin: 0;
+    width: 100%;
+    max-width: 480px;
+}
+
+label {
+    font-weight: 700;
+    margin: 0;
+    display: block;
+}
+
+button, input[type=submit] {
+    border: none;
+    background: rgb(10 113 193);
+    color: #fff;
+    border-radius: 0.25rem;
+    cursor: pointer;
+    padding: 0.25rem 0.35rem;
+    min-width: 8rem;
+    font-size: 0.95rem;
+    letter-spacing: 0.02rem;
+    font-weight: 500;
+    &:hover {
+        background: lighten(rgb(10 113 193), 10%);
+    }
+}
+
+#mc_embed_signup_scroll {
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+}

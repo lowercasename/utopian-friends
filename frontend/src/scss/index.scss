@@ -1,5 +1,10 @@
 @use 'mixins/responsive' as *;
 @import url('https://fonts.googleapis.com/css2?family=Gloock&family=Nunito:ital,wght@0,400;0,500;0,700;1,400;1,500;1,700&display=swap');
+@import 'components/forms';
+
+*, *::before, *::after {
+    box-sizing: border-box;
+}
 
 html {
     font-family: 'Nunito', sans-serif;
@@ -129,7 +134,7 @@ section#main-wrapper {
 }
 
 main#main {
-    flex: 0.8;
+    flex: 0.75;
     padding: 0 1rem;
     @include for-tablet-landscape-up {
         max-width: calc(0.8 * 1200px);
@@ -138,13 +143,15 @@ main#main {
 }
 
 nav#sidebar {
-    flex: 0.2;
+    flex: 0.25;
     padding: 0 1rem;
     border-top: 1px solid #ddd;
+    margin-bottom: 2rem;
     @include for-tablet-landscape-up {
-        max-width: calc(0.2 * 1200px);
+        max-width: calc(0.25 * 1200px);
         margin-right: auto;
         border-top: none;
+        margin-bottom: 0;
     }
 }
 
