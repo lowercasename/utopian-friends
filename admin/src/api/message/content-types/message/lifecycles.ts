@@ -26,7 +26,7 @@ Message: ${result.Message}
     // Send an email to the admin email
     try {
       await strapi.plugins["email"].services.email.send({
-        to: "mail@raphaelkabo.com",
+        to: "mail+utopianfriends@raphaelkabo.com, utopian.friends@yahoo.com",
         from: "no-reply@utopianfriends.org",
         replyTo: result.Email,
         subject: `[Utopian Friends] New message from ${result.Name}`,
