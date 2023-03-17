@@ -1,0 +1,24 @@
+---
+import type { Block } from "../lib/types";
+import ContactForm from "./ContactForm";
+
+const blocks: Block[] = Astro.props.blocks;
+---
+
+{
+  blocks.map((block, index) => (
+    <div class="block">
+      {block.__component === "shared.content" && (
+        <div class="content">
+          <div class="content" set:html={block.content} />
+        </div>
+      )}
+      {block.__component === "shared.contact-form" && (
+        <div class="contact-form">
+          {block.title && <h2>{block.title}</h2>}
+          <ContactForm client:load />
+        </div>
+      )}
+    </div>
+  ))
+}

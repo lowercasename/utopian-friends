@@ -1,0 +1,26 @@
+---
+import BaseLayout from "../../../layouts/BaseLayout.astro";
+import type { Post } from "../../../lib/types";
+import { strapiFetch } from "../../../lib/strapi";
+import PostList from "../../../components/PostList.astro";
+
+export async function getStaticPaths({ paginate }) {
+  const { data } = await strapiFetch("/posts");
+  const posts: Post[] = data;
+  return paginate(posts, { pageSize: 1 });
+}
+
+const { page } = Astro.props;
+
+console.log(page.data);
+---
+
+<BaseLayout title={`News - Page ${page.currentPage}`}>
+  <h1 set:html={`News - Page ${page.currentPage}`} />
+  <PostList posts={page.data} />
+  <aside id="post__bottom-navigation">
+    <p>
+      <i class="fas fa-arrow-left"></i>{" "}<a href="/news">Back to News</a>
+    </p>
+  </aside>
+</BaseLayout>

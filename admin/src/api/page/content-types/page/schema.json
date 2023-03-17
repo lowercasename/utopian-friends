@@ -26,6 +26,13 @@
         "preset": "toolbar"
       },
       "customField": "plugin::ckeditor5.CKEditor"
+    },
+    "blocks": {
+      "type": "dynamiczone",
+      "components": [
+        "shared.contact-form",
+        "shared.content"
+      ]
     }
   }
 }

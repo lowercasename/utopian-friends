@@ -1,7 +1,7 @@
 import type { GlobalSettings, MenuItem, StrapiFetchOptions } from './types';
 
 export const strapiFetch = async (path: string, options: StrapiFetchOptions = {}) => {
-    console.log(`${import.meta.env.STRAPI_URL}/api${path}`);
+    // console.log(`FETCH: ${import.meta.env.STRAPI_URL}/api${path}`);
     try {
         const response = await fetch(`${import.meta.env.STRAPI_URL}/api${path}`, {
             headers: {
@@ -47,7 +47,7 @@ export const getPostBySlug = async (slug: string) => {
 
 export const getPageBySlug = async (slug: string) => {
     try {
-        const reponse = await strapiFetch(`/pages?filters[Slug][$eq]=${slug}`);
+        const reponse = await strapiFetch(`/pages?filters[Slug][$eq]=${slug}&populate[0]=blocks`);
         return reponse.data[0];
     } catch (error) {
         console.error(error);

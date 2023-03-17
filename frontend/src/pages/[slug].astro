@@ -3,6 +3,7 @@
 import type { Page } from "../lib/types";
 import BaseLayout from "../layouts/BaseLayout.astro";
 import { getPageBySlug, strapiFetch } from "../lib/strapi";
+import Blocks from "../components/Blocks.astro";
 
 const { slug } = Astro.params;
 if (!slug) {
@@ -28,6 +29,6 @@ export async function getStaticPaths() {
 <BaseLayout title={page.attributes.Title}>
   <article>
     <h1>{page.attributes.Title}</h1>
-    <div class="content" set:html={page.attributes.Content} />
+    <Blocks blocks={page.attributes.blocks} />
   </article>
 </BaseLayout>
