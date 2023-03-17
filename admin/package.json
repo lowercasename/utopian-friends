@@ -11,15 +11,19 @@
   },
   "devDependencies": {},
   "dependencies": {
-    "@_sh/strapi-plugin-ckeditor": "^2.0.3",
-    "@strapi/plugin-i18n": "4.7.0",
-    "@strapi/plugin-users-permissions": "4.7.0",
-    "@strapi/strapi": "^4.7.1",
-    "mysql": "2.18.1",
+    "@_sh/strapi-plugin-ckeditor": "^2.0.4",
+    "@strapi/plugin-i18n": "^4.8.2",
+    "@strapi/plugin-users-permissions": "^4.8.2",
+    "@strapi/provider-email-mailgun": "^4.8.2",
+    "@strapi/strapi": "^4.8.2",
+    "mysql": "^2.18.1",
     "strapi-plugin-navigation": "^2.2.4"
   },
+  "resolutions": {
+    "mailgun.js": "8.1.0"
+  },
   "author": {
-    "name": "A Strapi developer"
+    "name": "Raphael Kabo"
   },
   "strapi": {
     "uuid": "3fb2681c-3b87-447f-bf2c-606eb81637b1"
