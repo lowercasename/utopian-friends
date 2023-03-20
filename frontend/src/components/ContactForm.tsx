@@ -73,9 +73,9 @@ export default function ContactForm() {
     <>
       <form onSubmit={onSubmit}>
         <label for="name">Name</label>
-        <input type="text" name="name" id="name" value={name} onInput={onInput} required />
+        <input type="text" name="name" id="name" placeholder="Required" value={name} onInput={onInput} required />
         <label for="email">Email</label>
-        <input type="email" name="email" id="email" value={email} onInput={onInput} required />
+        <input type="email" name="email" id="email" placeholder="Required" value={email} onInput={onInput} required />
         <label for="message">Message</label>
         <textarea name="message" id="message" value={message} onInput={onInput} />
         <input
